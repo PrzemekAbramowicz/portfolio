@@ -1,96 +1,137 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
 import ContactDetails from './ContactDetails';
 import Input from './Input';
 
 const ContactForm = () => {
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		phone: '',
-		message: '',
-	});
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        company: '',
+    });
 
-	const handleChange = e => {
-		const { name, value } = e.target;
-		setFormData(prevData => ({
-			...prevData,
-			[name]: value,
-		}));
-	};
+    const [isSending, setIsSending] = useState(false);
 
-	const handleSubmit = e => {
-		e.preventDefault();
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
-		const { name, email, phone, message } = formData;
+    const handleSubmit = async e => {
+        e.preventDefault();
 
-		const bodyMessage = `Imię: ${name}, <br> Email: ${email},<br> Telefon: ${phone},<br> Wiadomość: ${message}`;
+        if (formData.company) return;
 
-		// Sending the email using smtp.js
-		window.Email.send({
-			Host: 'smtp.elasticemail.com',
-			Username: 'p9738887@gmail.com',
-			Password: '3E0218BE9717808F8FA69EA0E74FD2C41B1B',
-			To: 'p9738887@gmail.com',
-			From: 'p9738887@gmail.com',
-			Subject: 'This is the subject',
-			Body: bodyMessage,
-		}).then(message => {
-			if (message === 'OK') {
-				Swal.fire({
-					title: 'Dziękuję za wiadomość!',
-					text: 'Wkrótce skontaktuję się z Tobą.',
-					icon: 'success',
-				});
-			}
-		});
+        if (!formData.email.includes('@')) {
+            Swal.fire('Błąd', 'Podaj poprawny adres email', 'error');
+            return;
+        }
 
-		setFormData({
-			name: '',
-			email: '',
-			phone: '',
-			message: '',
-		});
-	};
+        setIsSending(true);
 
-	return (
-		<div className='contact-form__wrapper container'>
-			<form id='contactForm' className='form' onSubmit={handleSubmit} autoComplete='off'>
-				<h2 className='form__title text-gradient'>Pracujmy razem!</h2>
-				<p className='form__subtitle'>
-					Jeżeli chcesz nawiązać współpracę lub masz jakiekolwiek pytania, ten formularz jest dla Ciebie!
-				</p>
-				<Input type='text' name='name' id='name' label='Imię' value={formData.name} onChange={handleChange} />
-				<Input
-					type='email'
-					name='email'
-					id='email'
-					label='Email'
-					value={formData.email}
-					onChange={handleChange}
-				/>
-				<Input
-					type='tel'
-					name='phone'
-					id='phone'
-					label='Telefon'
-					value={formData.phone}
-					onChange={handleChange}
-				/>
-				<Input
-					type='textarea'
-					name='message'
-					id='message'
-					label='Wiadomość'
-					value={formData.message}
-					onChange={handleChange}
-				/>
-				<input type='submit' value='Wyślij' className='form__btn' />
-			</form>
+        try {
+            await emailjs.send(
+                'service_hnv35s9',
+                'template_czggzf5',
+                {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                },
+                '9QGJufcb49ROSXZPM'
+            );
+
+            Swal.fire({
+                title: 'Wysłano!',
+                text: 'Dziękuję za wiadomość. Odezwę się wkrótce 👋',
+                icon: 'success',
+            });
+
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                company: '',
+            });
+        } catch (error) {
+            console.error(error);
+            Swal.fire({
+                title: 'Błąd',
+                text: 'Nie udało się wysłać formularza. Spróbuj ponownie później.',
+                icon: 'error',
+            });
+        } finally {
+            setIsSending(false);
+        }
+    };
+
+    return (
+        <div className='contact-form__wrapper container'>
+            <form className='form' onSubmit={handleSubmit} noValidate>
+                <h2 className='form__title text-gradient'>Pracujmy razem!</h2>
+                <p className='form__subtitle'>
+                    Masz projekt lub pytanie? Napisz do mnie 👇
+                </p>
+
+                <input
+                    type='text'
+                    name='company'
+                    value={formData.company}
+                    onChange={handleChange}
+                    style={{ display: 'none' }}
+                    tabIndex='-1'
+                    autoComplete='off'
+                />
+
+                <Input
+                    type='text'
+                    name='name'
+                    id='name'
+                    label='Imię'
+                    value={formData.name}
+                    onChange={handleChange}
+                />
+
+                <Input
+                    type='email'
+                    name='email'
+                    id='email'
+                    label='Email'
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+
+                <Input
+                    type='tel'
+                    name='phone'
+                    id='phone'
+                    label='Telefon'
+                    value={formData.phone}
+                    onChange={handleChange}
+                />
+
+                <Input
+                    type='textarea'
+                    name='message'
+                    id='message'
+                    label='Wiadomość'
+                    value={formData.message}
+                    onChange={handleChange}
+                />
+
+                <button className='form__btn' disabled={isSending}>
+                    {isSending ? 'Wysyłanie...' : 'Wyślij'}
+                </button>
+            </form>
+
             <ContactDetails />
-		</div>
-	);
+        </div>
+    );
 };
-
 
 export default ContactForm;
