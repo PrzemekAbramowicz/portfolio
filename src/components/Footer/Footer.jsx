@@ -28,7 +28,7 @@ const Footer = () => {
                     </li>
                 </ul>
                 <p className='footer__copyright'>
-                    &copy; 2025 Wszelkie prawa zastrzeżone przez <b>ABRAMOWICZ.DEV</b>
+                    &copy; 2026 Wszelkie prawa zastrzeżone przez <b>ABRAMOWICZ.DEV</b>
                 </p>
             </div>
         </footer>

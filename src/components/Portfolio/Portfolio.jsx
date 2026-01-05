@@ -34,34 +34,34 @@ const Portfolio = () => {
             {
                 name: 'Great Evening',
                 imgSrc: 'img/great-evening.png',
-                github: 'https://przemekabramowicz.github.io/great-evening/',
-                live: 'https://github.com/PrzemekAbramowicz/great-evening/',
+                github: 'https://github.com/PrzemekAbramowicz/great-evening/ ',
+                live: 'https://przemekabramowicz.github.io/great-evening/',
             },
             {
                 name: 'Client CRM',
                 imgSrc: 'img/clients-crm.png',
                 github: 'https://github.com/PrzemekAbramowicz/Clients-CRM',
             },
-            {
-                name: 'Planet Pay',
-                imgSrc: 'img/planetpay.png',
-                live: 'https://planetpay.pl/',
-            },
-            {
-                name: 'ITCARD',
-                imgSrc: 'img/itcard.png',
-                live: 'https://itcard.pl/',
-            },
-            {
-                name: 'Safety Cloud Hub',
-                imgSrc: 'img/safetycloudhub.png',
-                live: 'https://safetycloudhub.com/',
-            },
-            {
-                name: 'Animalactin',
-                imgSrc: 'img/animalactin.png',
-                live: 'https://animalactin.eu/',
-            },
+            // {
+            //     name: 'Planet Pay',
+            //     imgSrc: 'img/planetpay.png',
+            //     live: 'https://planetpay.pl/',
+            // },
+            // {
+            //     name: 'ITCARD',
+            //     imgSrc: 'img/itcard.png',
+            //     live: 'https://itcard.pl/',
+            // },
+            // {
+            //     name: 'Safety Cloud Hub',
+            //     imgSrc: 'img/safetycloudhub.png',
+            //     live: 'https://safetycloudhub.com/',
+            // },
+            // {
+            //     name: 'Animalactin',
+            //     imgSrc: 'img/animalactin.png',
+            //     live: 'https://animalactin.eu/',
+            // },
             {
                 name: 'Stopwatch',
                 imgSrc: 'img/stopwatch-project.png',
@@ -69,28 +69,28 @@ const Portfolio = () => {
                 live: 'https://przemekabramowicz.github.io/Frontowcy-project2-stopwatch/',
             },
         ],
-        'client-projects': [
-            {
-                name: 'Planet Pay',
-                imgSrc: 'img/planetpay.png',
-                live: 'https://planetpay.pl/',
-            },
-            {
-                name: 'ITCARD',
-                imgSrc: 'img/itcard.png',
-                live: 'https://itcard.pl/',
-            },
-            {
-                name: 'Safety Cloud Hub',
-                imgSrc: 'img/safetycloudhub.png',
-                live: 'https://safetycloudhub.com/',
-            },
-            {
-                name: 'Animalactin',
-                imgSrc: 'img/animalactin.png',
-                live: 'https://animalactin.eu/',
-            },
-        ],
+        // 'client-projects': [
+        //     {
+        //         name: 'Planet Pay',
+        //         imgSrc: 'img/planetpay.png',
+        //         live: 'https://planetpay.pl/',
+        //     },
+        //     {
+        //         name: 'ITCARD',
+        //         imgSrc: 'img/itcard.png',
+        //         live: 'https://itcard.pl/',
+        //     },
+        //     {
+        //         name: 'Safety Cloud Hub',
+        //         imgSrc: 'img/safetycloudhub.png',
+        //         live: 'https://safetycloudhub.com/',
+        //     },
+        //     {
+        //         name: 'Animalactin',
+        //         imgSrc: 'img/animalactin.png',
+        //         live: 'https://animalactin.eu/',
+        //     },
+        // ],
         'my-projects': [
             {
                 name: 'Tropical paradise',
@@ -122,7 +122,7 @@ const Portfolio = () => {
         <section className='portfolio' id='portfolio'>
             <div className='portfolio__wrapper container'>
                 <h2 className='portfolio__title text-gradient'>Portfolio</h2>
-                <div className='tabs'>
+                {/* <div className='tabs'>
                     <button
                         className={`tab-button ${activeTab === 'all' ? 'active' : ''}`}
                         data-tab='all'
@@ -145,7 +145,7 @@ const Portfolio = () => {
                         Moje projekty
                     </button>
                     <span className='glider' ref={gliderRef}></span>
-                </div>
+                </div> */}
                 {Object.keys(portfolioItems).map(tab => (
                     <div
                         key={tab}
