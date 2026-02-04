@@ -28,7 +28,7 @@ const Hero = () => {
                     <p className='hero__pretitle'>Cześć jestem Przemek</p>
                     <h1 className='hero__title text-gradient'>Frontend Developer</h1>
                     <div className='hero__img hero__img--mobile'>
-                        <img src='img/portfolio_img2.png' alt='Przemek Abramowicz' />
+                        <img src='img/portfolio_img3.png' alt='Przemek Abramowicz' />
                     </div>
                     <p className='hero__subtitle'>
                         Jestem zapalonym i pełnym pasji frontendowcem. Posiadam solidną wiedzę w&nbsp;zakresie budowania
@@ -52,7 +52,7 @@ const Hero = () => {
                     </ul>
                 </div>
                 <div className='hero__img hero__img--desktop'>
-                    <img src='img/portfolio_img2.png' alt='Przemek Abramowicz' />
+                    <img src='img/portfolio_img3.png' alt='Przemysław Abramowicz' />
                 </div>
             </div>
         </section>

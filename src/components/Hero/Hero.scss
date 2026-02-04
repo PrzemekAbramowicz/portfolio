@@ -84,6 +84,7 @@
 	&__img--mobile {
 		display: flex;
 		width: fit-content;
+        max-width: 350px;
 	}
 	&__img--desktop {
 		display: none;
@@ -151,6 +152,7 @@
 		}
 		&__img--desktop {
 			display: flex;
+            max-width: 450px;
 		}
 		&__img--mobile {
 			display: none;
