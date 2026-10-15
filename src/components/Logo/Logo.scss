@@ -1,0 +1,25 @@
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #f7f4ff;
+    font-family: 'Jersey 15', sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+
+    &__symbol {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        font-size: 32px;
+        letter-spacing: -1px;
+
+        span { color: #a779ff; }
+    }
+
+    &__name {
+        font-size: 32px;
+        span { color: #a779ff; }
+    }
+}

@@ -10,8 +10,7 @@ import ScrollAurora from './components/ScrollAurora';
 function App() {
 	return (
 		<>
-			<Header isSticky={false} />
-			<Header isSticky={true} />
+			<Header />
 			<Hero />
 			<div className='page-sections'>
 			<ScrollAurora />

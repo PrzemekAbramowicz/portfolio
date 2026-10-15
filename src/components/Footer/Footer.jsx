@@ -1,9 +1,11 @@
+import Logo from '../Logo/Logo';
+
 const Footer = () => {
     return (
         <footer className='footer'>
             <div className='footer__wrapper container'>
-                <a href='#' className='footer__logo'>
-                    <span className='logo-name'>ABRAMOWICZ.DEV</span>
+                <a href='#' className='footer__logo' aria-label='Abramowicz.dev — strona główna'>
+                    <Logo />
                 </a>
                 <ul className='footer__list'>
                     <li className='footer__item'>

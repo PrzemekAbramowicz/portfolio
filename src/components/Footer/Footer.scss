@@ -25,24 +25,10 @@
 	}
 
 	&__logo {
-		color: #fff;
-		span {
-			position: relative;
-			padding-top: 0;
-			padding-left: 0;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: fit-content;
-			font-size: 32px;
-			&:before {
-				content: '</>';
-				position: absolute;
-				left: -1.5rem;
-				top: -1.5rem;
-				transform: rotate(-10deg);
-			}
-		}
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		.brand__name { font-size: clamp(24px, 6vw, 36px); }
 	}
 	&__list {
 		display: flex;
@@ -105,11 +91,7 @@
 @media (min-width: 768px) {
 	.footer {
 		padding: 4rem 0 2rem;
-		&__logo {
-			span {
-				font-size: 36px;
-			}
-		}
+
 
 		&__item {
 			flex-basis: auto;
