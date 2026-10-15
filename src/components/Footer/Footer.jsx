@@ -16,20 +16,13 @@ const Footer = () => {
                             Umiejętności
                         </a>
                     </li>
-                    {/* <li className='footer__item'>
-						<a className='footer__item-link' href='#testimonials'>
-							Opinie
-						</a>
-					</li> */}
                     <li className='footer__item'>
                         <a className='footer__item-link' href='#contact'>
                             Kontakt
                         </a>
                     </li>
                 </ul>
-                <p className='footer__copyright'>
-                    &copy; 2026 Wszelkie prawa zastrzeżone przez <b>ABRAMOWICZ.DEV</b>
-                </p>
+                <p className='footer__copyright'>&copy; {new Date().getFullYear()} Abramowicz.dev</p>
             </div>
         </footer>
     );
