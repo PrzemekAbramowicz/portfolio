@@ -13,3 +13,72 @@
 @import './components/Testimonials/Testimonials.scss';
 @import './components/Contact/Contact.scss';
 @import './components/Footer/Footer.scss';
+
+.page-sections {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+
+    .portfolio { isolation: auto; }
+    .portfolio__wrapper,
+    .skills > *,
+    .contact-form > *,
+    .footer > * { position: relative; z-index: 2; }
+}
+
+.scroll-aurora {
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 120%;
+    height: clamp(560px, 65vw, 900px);
+    z-index: 1;
+    pointer-events: none;
+    &__light {
+        position: absolute;
+        border-radius: 45% 55% 70% 30% / 60% 35% 65% 40%;
+        filter: blur(45px);
+        transform: rotate(var(--aurora-turn, -12deg));
+    }
+    &__light--violet {
+        inset: 18% 15% 25% 8%;
+        background: radial-gradient(ellipse at 50% 50%, #a36bff38, #8750f71a 42%, transparent 70%);
+    }
+    &__light--blue {
+        inset: 30% 0 10% 42%;
+        background: radial-gradient(ellipse at 50% 50%, #67dce92b, #796bff14 45%, transparent 70%);
+    }
+    &__ribbons { width: 100%; height: 100%; transform: rotate(var(--aurora-turn, -12deg)); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .scroll-aurora__light--violet { animation: aurora-breathe 10s ease-in-out infinite alternate, aurora-float 17s ease-in-out infinite; }
+    .scroll-aurora__light--blue { animation: aurora-breathe 13s ease-in-out infinite alternate-reverse, aurora-float 21s ease-in-out -7s infinite reverse; }
+    .scroll-aurora__ribbons { animation: aurora-float 19s ease-in-out -4s infinite; }
+    .scroll-aurora__ribbons path {
+        animation: aurora-wave 9s ease-in-out infinite alternate;
+        @for $i from 1 through 7 {
+            &:nth-child(#{$i + 1}) { animation-delay: #{$i * -.8}s; }
+        }
+    }
+}
+@keyframes aurora-float {
+    0%, 100% { translate: -1% 8px; rotate: -1deg; }
+    33% { translate: 2% -18px; rotate: 1.5deg; }
+    66% { translate: -2% -8px; rotate: -.5deg; }
+}
+@keyframes aurora-wave {
+    from { translate: 0 -6px; }
+    to { translate: 0 8px; }
+}
+@keyframes aurora-breathe {
+    from { scale: .9 1; opacity: .65; }
+    to { scale: 1.15 1.2; opacity: 1; }
+}
+@media (max-width: 700px) {
+    .scroll-aurora { left: -30%; width: 160%; }
+    .scroll-aurora__light { filter: blur(28px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .scroll-aurora { transform: none !important; }
+}

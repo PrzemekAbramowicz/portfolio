@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Portfolio from './components/Portfolio/Portfolio';
 import Skills from './components/Skills/Skills';
-import Testimonials from './components/Testimonials/Testimonials';
+import ScrollAurora from './components/ScrollAurora';
 
 function App() {
 	return (
@@ -13,11 +13,14 @@ function App() {
 			<Header isSticky={false} />
 			<Header isSticky={true} />
 			<Hero />
+			<div className='page-sections'>
+			<ScrollAurora />
 			<Portfolio />
 			<Skills />
 			{/* <Testimonials /> */}
 			<Contact />
 			<Footer />
+			</div>
 		</>
 	);
 }
