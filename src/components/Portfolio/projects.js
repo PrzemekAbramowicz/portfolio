@@ -38,6 +38,7 @@ export const projects = [
         category: 'personal',
         imgSrc: 'img/clients-crm.png',
         github: 'https://github.com/PrzemekAbramowicz/Clients-CRM',
+        live: 'https://clients-crm-opal.vercel.app/',
     },
     {
         id: 'tropical-paradise',
